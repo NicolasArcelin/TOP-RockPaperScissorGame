@@ -2,9 +2,30 @@
 
 let userChoice;
 let compChoice;
+const rockButton = document.getElementById('rock');
+const paperButton = document.getElementById('paper');
+const scissorsButton = document.getElementById('scissors')
+
+rockButton.addEventListener('click', () => {
+    userChoice = 'rock';
+//console.log(userChoice);
+    playRound();
+});
+
+paperButton.addEventListener('click', () => {
+    userChoice = 'paper';
+//console.log(userChoice);
+    playRound();
+});
+
+rockButton.addEventListener('click', () => {
+    userChoice = 'rock';
+//console.log(userChoice);
+    playRound();
+});
 
 
-function getComputerChoice () {
+function getComputerChoice () { console.log('getComputerChoice Funciton Ran');
 
     userChoice = prompt ("Chose rock, paper, or scissors. Don't put something like Lazer guns... thats cheating.");
 
@@ -31,17 +52,19 @@ function getComputerChoice () {
 
 // getComputerChoice();
 
-function playRound () {
-
-// alert(compChoice);
+function playRound () { console.log('playRound Function');
    
-    userChoice = userChoice.toLowerCase();
+    const div = document.querySelector('div');
+                                                              const computerWins = document.createElement
+
+//userChoice = userChoice.toLowerCase();
 
     if (userChoice == compChoice) {
         return "It is a tie!";
     } else if ((userChoice == 'rock' && compChoice == 'scissor') || (userChoice == 'scissor' && compChoice == 'paper') || (userChoice == 'paper' && compChoice == 'rock')) {
 // alert("User wins!");
         return "Congratulations, you win!";
+        
     } else if ((userChoice == 'scissor' && compChoice == 'rock') || (userChoice == 'paper' && compChoice == 'scissor') || (userChoice == 'rock' && compChoice == 'paper')) {
 // alert("Computer wins!");
         return "Computer wins!";
@@ -53,11 +76,11 @@ function playRound () {
     }
 }
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        console.log(getComputerChoice());
-        console.log(playRound());
-    }
-}
+// function game() {
+//     for (let i = 0; i < 5; i++) {
+//         console.log(getComputerChoice());
+//         console.log(playRound());
+//     }
+// }
 
-game();
+// game();
