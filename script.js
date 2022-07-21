@@ -2,36 +2,55 @@
 
 let userChoice;
 let compChoice;
+
 const rockButton = document.getElementById('rock');
 const paperButton = document.getElementById('paper');
-const scissorsButton = document.getElementById('scissors')
+const scissorButton = document.getElementById('scissor');
+const divResult = document.querySelector('.div2');
+let compScore = 0;
+let userScore = 0;
+let totalGames = 0;
 
-rockButton.addEventListener('click', () => {
-    userChoice = 'rock';
-//console.log(userChoice);
+let playGame = () => { 
+    getComputerChoice();
     playRound();
-});
+    gameOver();
+};
+//Buttons get users choice and creates a computer choice
+    rockButton.addEventListener('click', () => {
+        userChoice = 'rock';
+        playGame();
+        // console.log(userChoice);
+        // console.log(compChoice);
+    });
 
-paperButton.addEventListener('click', () => {
-    userChoice = 'paper';
-//console.log(userChoice);
-    playRound();
-});
+    paperButton.addEventListener('click', () => {
+        userChoice = 'paper';
+        playGame();
+        
+        // console.log(userChoice);
+        // console.log(compChoice);
+    });
 
-rockButton.addEventListener('click', () => {
-    userChoice = 'rock';
-//console.log(userChoice);
-    playRound();
-});
+    scissorButton.addEventListener('click', () => {
+        userChoice = 'scissor';
+        playGame();
+
+        // console.log(userChoice);
+        // console.log(compChoice);
+    });
 
 
-function getComputerChoice () { console.log('getComputerChoice Funciton Ran');
+function getComputerChoice () { 
+//console.log('getComputerChoice Funciton Ran');
 
-    userChoice = prompt ("Chose rock, paper, or scissors. Don't put something like Lazer guns... thats cheating.");
+//userChoice = prompt ("Chose rock, paper, or scissors. Don't put something like Lazer guns... thats cheating.");
 
 
     let rndNumber = Math.round(Math.random()*2);
 // console.log(rndNumber);
+
+//Computers choice is off of a random number
     switch (rndNumber) {
         case 0:
 // alert('0');
@@ -52,35 +71,44 @@ function getComputerChoice () { console.log('getComputerChoice Funciton Ran');
 
 // getComputerChoice();
 
-function playRound () { console.log('playRound Function');
+function playRound () { 
+//   console.log('playRound Function');
    
-    const div = document.querySelector('div');
-                                                              const computerWins = document.createElement
+//const div = document.querySelector('div');
+//const computerWins = document.createElement
 
 //userChoice = userChoice.toLowerCase();
 
-    if (userChoice == compChoice) {
+    if (userChoice == compChoice) { 
+//console.log("Tie!");
+        const tieText = document.createTextNode('Its a Tie!');
+        divResult.appendChild(tieText);
+
         return "It is a tie!";
+    
     } else if ((userChoice == 'rock' && compChoice == 'scissor') || (userChoice == 'scissor' && compChoice == 'paper') || (userChoice == 'paper' && compChoice == 'rock')) {
-// alert("User wins!");
-        return "Congratulations, you win!";
+//console.log("User wins!");
+        const userWins = document.createTextNode('Congradulations, you win!');
+        divResult.appendChild(userWins);
+        userScore += 1;
+        return "User won this round";
         
     } else if ((userChoice == 'scissor' && compChoice == 'rock') || (userChoice == 'paper' && compChoice == 'scissor') || (userChoice == 'rock' && compChoice == 'paper')) {
-// alert("Computer wins!");
-        return "Computer wins!";
-    } else if (userChoice == 'lazer guns') {
-        return "Funny... you win";
-    } else {
-// alert("You only have 3ish choices. Rock, paper, etc...");
-        return "You only have 3ish choices. Rock, paper, etc...";
+//console.log("Computer wins!");
+        const compWins = document.createTextNode('Computer wins!');
+        divResult.appendChild(compWins);
+        compScore += 1;
+        return "Computer won this round";
     }
-}
+};
 
-// function game() {
-//     for (let i = 0; i < 5; i++) {
-//         console.log(getComputerChoice());
-//         console.log(playRound());
-//     }
-// }
+function gameOver () { 
+    console.log('gameOver');
+    if (userScore == 5 || compScore == 5) {
+    const endGame = document.createTextNode('--- --- --- Game is over --- --- ---');
+    divResult.appendChild(endGame);
 
-// game();
+    // rockButton.removeChild()
+    // paperButton.removeEventListener();
+    // scissorButton.removeEventListener();
+}};
